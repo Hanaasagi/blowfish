@@ -85,4 +85,8 @@
         background_blur.style.opacity = (scroll / 300)
     });
 </script>
+{{ $jsSakura := resources.Get "js/sakura.js" }}
+{{ $jsSakura = $jsSakura | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $jsSakura.RelPermalink }}" integrity="{{ $jsSakura.Data.Integrity }}"></script>
+
 {{ end }}
