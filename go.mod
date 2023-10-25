@@ -1,3 +1,3 @@
-module github.com/nunocoracao/blowfish/v2
+module github.com/Hanaasagi/blowfish/v2
 
 go 1.16
