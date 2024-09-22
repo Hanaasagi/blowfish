@@ -34,6 +34,9 @@
   {{ $jsPage = $jsPage | resources.Minify | resources.Fingerprint "sha512" }}
   <script type="text/javascript" src="{{ $jsPage.RelPermalink }}" integrity="{{ $jsPage.Data.Integrity }}"></script>
   {{ end }}
+  {{ $jsSakura := resources.Get "js/sakura.js" }}
+  {{ $jsSakura = $jsSakura | resources.Minify | resources.Fingerprint "sha512" }}
+  <script type="text/javascript" src="{{ $jsSakura.RelPermalink }}" integrity="{{ $jsSakura.Data.Integrity }}"></script>
   </header>
   <section class="{{ if $toc -}}
       mt-12
@@ -51,9 +54,6 @@
     <div class="min-w-0 min-h-0 max-w-prose">
       {{ .Content }}
     </div>
-
-
-
 
   </section>
   {{ if gt .Pages 0 }}
