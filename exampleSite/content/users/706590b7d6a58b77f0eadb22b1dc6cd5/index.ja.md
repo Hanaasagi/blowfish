@@ -1,8 +1,8 @@
 ---
                 title: "The Space 🌍"
-                tags: [個人的なウェブサイト, 技術ブログ]
+                tags: [個人ウェブサイト, 技術ブログ]
                 externalUrl: "https://panoskorovesis.github.io/"
-                weight: 1021
+                weight: 90
                 showDate: false
                 showAuthor: false
                 showReadingTime: false

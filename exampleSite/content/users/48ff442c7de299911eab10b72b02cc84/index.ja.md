@@ -1,8 +1,8 @@
 ---
                 title: "gma.name"
-                tags: [パーソナルサイト]
+                tags: [個人サイト]
                 externalUrl: "https://gma.name"
-                weight: 421
+                weight: 42
                 showDate: false
                 showAuthor: false
                 showReadingTime: false

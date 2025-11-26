@@ -2,7 +2,7 @@
                 title: "bbagwang.com"
                 tags: [Personal site]
                 externalUrl: "https://bbagwang.com"
-                weight: 391
+                weight: 39
                 showDate: false
                 showAuthor: false
                 showReadingTime: false
