@@ -1,5 +1,6 @@
 ---
 title: "高度なカスタマイズ"
+featureimage: "images/v3/advanced-customisation.png"
 weight: 13
 draft: false
 description: "Blowfishを手動でビルドする方法を学びましょう。"
@@ -127,7 +128,7 @@ html {
 
 ### シンタックスハイライトテーマの変更
 
-Blowfish はカスタム構文ハイライトスタイルを使用しており、色は `assets/css/schemes` に定義されています。構文ハイライトテーマを変更するには、`assets/css/custom.css` を作成し、次の内容を追加してください：
+構文ハイライトテーマを変更するには、`assets/css/custom.css` を作成し、次の内容を追加してください：
 
 ```css
 .chroma,
@@ -136,7 +137,7 @@ Blowfish はカスタム構文ハイライトスタイルを使用しており�
 .chroma:is(.dark *) * {
   color: unset;
   font-weight: unset;
-  background-color: unset;
+  font-style: unset;
 }
 ```
 
@@ -144,38 +145,13 @@ Blowfish はカスタム構文ハイライトスタイルを使用しており�
 
 ```sh
 # Mac/Linux
-hugo gen chromastyles --style=emacs | sed 's/\./html:not(.dark) ./' >> assets/css/custom.css
-hugo gen chromastyles --style=evergarden | sed 's/\./html.dark ./' >> assets/css/custom.css
+(echo 'html:not(.dark) {'; hugo gen chromastyles --style=emacs; echo '}') >> assets/css/custom.css
+(echo 'html.dark {'; hugo gen chromastyles --style=evergarden; echo '}') >> assets/css/custom.css
 
 # Windows PowerShell
 # このコマンドは CMD では実行できず PowerShell で実行する必要がある
-hugo gen chromastyles --style=emacs | ForEach-Object { $_ -replace '\.', 'html:not(.dark) .' } | Add-Content -Path "css/custom.txt"
-hugo gen chromastyles --style=evergarden | ForEach-Object { $_ -replace '\.', 'html.dark .' } | Add-Content -Path "css/custom.txt"
-```
-
-最終的な `custom.css` ファイルは以下のようになります:
-
-```css
-.chroma,
-.chroma *,
-.chroma:is(.dark *),
-.chroma:is(.dark *) * {
-  color: unset;
-  font-weight: unset;
-  background-color: unset;
-}
-
-/* Generated using: hugo gen chromastyles --style=emacs */
-
-/* Background */ html:not(.dark) .bg { background-color:#f8f8f8; }
-/* PreWrapper */ html:not(.dark) .chroma { background-color:#f8f8f8; }
-/* ... */
-
-/* Generated using: hugo gen chromastyles --style=evergarden */
-
-/* Background */ html.dark .bg { color:#d6cbb4;background-color:#252b2e; }
-/* PreWrapper */ html.dark .chroma { color:#d6cbb4;background-color:#252b2e; }
-/* ... */
+@("html:not(.dark) {"; (hugo gen chromastyles --style=emacs); "}") | Add-Content -Path "assets/css/custom.css"
+@("html.dark {"; (hugo gen chromastyles --style=evergarden); "}") | Add-Content -Path "assets/css/custom.css"
 ```
 
 すべての利用可能なスタイルは、[Hugo のドキュメント](https://gohugo.io/quick-reference/syntax-highlighting-styles/#styles)で確認できます。
@@ -257,7 +233,7 @@ npm install
 
 ```shell
 cd ../..
-./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit
+node ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit
 ```
 
 関係するパスのため少し見苦しいコマンドですが、基本的に Tailwind CLI を呼び出し、Tailwind 設定ファイルの場所（上で見たもの）、テーマの `main.css` ファイルの場所、そしてコンパイル済み CSS ファイルを配置する場所（Hugo プロジェクトの `assets/css/compiled/` フォルダ）を渡しています。
@@ -279,8 +255,8 @@ cd ../..
   "description": "",
   "scripts": {
     "server": "hugo server -b http://localhost -p 8000",
-    "dev": "NODE_ENV=development ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit -w",
-    "build": "NODE_ENV=production ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit"
+    "dev": cross-env "NODE_ENV=development ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit -w",
+    "build": cross-env "NODE_ENV=production ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit"
   },
   // その他...
 }

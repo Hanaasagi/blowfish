@@ -1,5 +1,6 @@
 ---
 title: "Front Matter"
+featureimage: "images/v3/front-matter.png"
 weight: 7
 draft: false
 description: "All the front matter variables available in Blowfish."
@@ -42,6 +43,7 @@ Front matter parameter default values are inherited from the theme's [base confi
 | `showPagination` | `article.showPagination` | Whether or not the next/previous article links are displayed in the article footer. |
 | `invertPagination` | `article.invertPagination` | Whether or not to flip the direction of the next/previous article links. |
 | `showReadingTime` | `article.showReadingTime` | Whether or not the article reading time is displayed. |
+| `showReadingProgress` | `article.showReadingProgress` | Whether or not the reading progress bar is displayed on this article. |
 | `showTaxonomies` | `article.showTaxonomies` | Whether or not the taxonomies that relate to this article are displayed. |
 | `showTableOfContents` | `article.showTableOfContents` | Whether or not the table of contents is displayed on this article. |
 | `showWordCount` | `article.showWordCount` | Whether or not the article word count is displayed. |
@@ -54,6 +56,8 @@ Front matter parameter default values are inherited from the theme's [base confi
 | `series_order` | _Not set_ | Number of the article within the series. |
 | `summary` | Auto generated using `summaryLength` (see [site configuration]({{< ref "configuration#site-configuration" >}})) | When `showSummary` is enabled, this is the Markdown string to be used as the summary for this article. |
 | `xml` | `true` unless excluded by `sitemap.excludedKinds` | Whether or not this article is included in the generated `/sitemap.xml` file. |
+| `excludeFromSearch` | `false` | Whether or not this article should be excluded from the sitemap and search index. When `true`, the page will not appear in `sitemap.xml` or `index.json`. |
 | `layoutBackgroundBlur` | `true` | Makes the background image in the background heroStyle blur with the scroll |
 | `layoutBackgroundHeaderSpace` | `true` | Add space between the header and the body. |
+| `externalLinkForceNewTab` | `article.externalLinkForceNewTab` | Should external links in markdown open in a new tab. |
 <!-- prettier-ignore-end -->

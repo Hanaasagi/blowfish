@@ -1,5 +1,6 @@
 ---
 title: "フロントマター"
+featureimage: "images/v3/front-matter.png"
 weight: 7
 draft: false
 description: "Blowfish で利用可能なすべてのフロントマター変数。"
@@ -56,4 +57,5 @@ series_order: 7
 | `xml` | `sitemap.excludedKinds` によって除外されない限り `true` | この記事が生成された `/sitemap.xml` ファイルに含まれるかどうか。 |
 | `layoutBackgroundBlur` | `true` | background heroStyle の背景画像をスクロールでぼかします |
 | `layoutBackgroundHeaderSpace` | `true` | ヘッダーと本文の間にスペースを追加します |
+| `externalLinkForceNewTab` | `article.externalLinkForceNewTab` | マークダウン内の外部リンクを新しいタブで開くかどうかです。 |
 <!-- prettier-ignore-end -->
