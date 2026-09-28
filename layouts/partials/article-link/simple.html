@@ -82,6 +82,9 @@
 {{ end }}
 
 
+{{/* Custom: hide feature images in simple article list (preserving original fork behavior) */}}
+{{ $featuredURL = "" }}
+
 <article class="article-link--simple group {{ $cardClasses }}">
   {{ with $featuredURL }}
     <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail">
